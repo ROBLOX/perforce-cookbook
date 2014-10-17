@@ -6,22 +6,25 @@
 # Copyright 2013, Roblox Inc.
 #
 
-user node[:p4][:owner] do
+user node['perforce']['p4']['owner'] do
   system true
   action :create
 end
 
-directory node[:p4][:install_dir] do
+directory node['perforce']['p4']['bin_dir'] do
   recursive true
 end
 
+exe_file = node[:os] == "windows" ? "p4.exe" : "p4"
+ftp_path =  get_ftp_path(node['perforce']['p4']['version'], exe_file)
+
 remote_file 'p4' do
-  exe_file = node[:os] == "windows" ? "p4.exe" : "p4"
-  source get_ftp_path(node[:p4][:version], exe_file)
-  path "#{node[:p4][:install_dir]}/#{exe_file}"
-  owner node[:p4][:owner]
-  group node[:p4][:group]
+  source ftp_path
+  path "#{node['perforce']['p4']['bin_dir']}/#{exe_file}"
+  owner node['perforce']['p4']['owner']
+  group node['perforce']['p4']['group']
   mode 0755
+  checksum node['perforce']['p4']['checksum']
 end
 
 template "/etc/profile.d/perforce.sh" do
@@ -29,8 +32,4 @@ template "/etc/profile.d/perforce.sh" do
   group 'root'
   mode 0755
   source "perforce.sh.erb"
-  variables(:p4_port => node[:p4][:port],
-            :p4_charset => node[:p4][:charset],
-            :p4_user => node[:p4][:user],
-            :p4_config => node[:p4][:config_filename])
 end

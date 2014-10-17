@@ -14,7 +14,7 @@ Attributes
 p4 (client)
 * owner - System user in who's home directory the configs will be stored. File permissions use this user as well.
 * group - System group of the owner above.
-* install_dir - Where the p4 executable will be placed.
+* bin_dir - Where the p4 executable will be placed.
 * config_filename - Configuration file name.
 * host - Perforce server hostname.
 * port_num - Port number of Perforce Server.
@@ -33,7 +33,7 @@ p4 (client)
 p4d (server)
 * owner] - Owner of the p4d executable.
 * group - Group of the p4d executable.
-* install_dir - Where the p4d executable will be placed.
+* bin_dir - Where the p4d executable will be placed.
 * journal - Contains 3 attributes
     * enabled - Whether journaling is active.
     * dir - The directory in which the journal file will be stored in.
@@ -62,10 +62,11 @@ Include the recipe and set the attributes above as node or environment attribute
 Authors
 ==================
 
+- Author:: Antek Baranski <antek.baranski@gmail.com>
+- Author:: Brandon Chothia <brandon@roblox.com>
 - Author:: Josiah Kiehl <josiah@bluepojo.com>
 - Author:: Kyle Allan <kallan@riotgames.com>
-- Author:: Brandon Chothia <brandon@roblox.com>
-- Author:: Antek Baranski <abaranski@roblox.com>
 
-- Copyright:: 2012, Riot Games
+- Copyright:: 2014, Antek Baranski
 - Copyright:: 2013, Roblox, Inc
+- Copyright:: 2012, Riot Games

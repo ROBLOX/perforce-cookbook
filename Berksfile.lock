@@ -1,10 +1,7 @@
-{
-  "sources": {
-    "perforce": {
-      "path": "."
-    },
-    "homebrew": {
-      "locked_version": "1.0.0"
-    }
-  }
-}
+DEPENDENCIES
+  perforce
+    path: .
+    metadata: true
+
+GRAPH
+  perforce (1.0.0)
